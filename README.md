@@ -1,1 +1,1 @@
-# WumpusAI
+# WumpusWorldAI

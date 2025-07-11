@@ -1,91 +1,244 @@
+-- main.lua
+-- LÖVE 2D main controller for Wumpus World AI
+-- Orchestrates game logic, UI, and user interaction
+
+-- Clear module cache for development
 package.loaded["environment"] = nil
 package.loaded["percepts"] = nil
 package.loaded["knowledge_base"] = nil
 package.loaded["inference_engine"] = nil
 package.loaded["agent"] = nil
-
--- Set up output file
-local output_file = io.open("wumpus_output2.txt", "w")
-if not output_file then
-    error("Could not open output file")
-end
-io.output(output_file) -- Redirect all print output to this file
-
--- Keep a reference to the original print function
-local original_print = print
-print = function(...)
-    original_print(...) -- Still print to console
-    io.write(table.concat({...}, " ") .. "\n") -- Write to file
-end
+package.loaded["ui"] = nil
 
 -- Load all required modules
 local Environment = require("environment")
 local KnowledgeBase = require("knowledge_base")
 local InferenceEngine = require("inference_engine")
 local Agent = require("agent")
+local Percepts = require("percepts")
+local UI = require("ui")
 
--- -- Verify module loading
--- if type(KnowledgeBase) ~= "table" then
---     error("Failed to load knowledge_base module: expected a table, got " .. type(KnowledgeBase))
--- end
--- if type(InferenceEngine) ~= "table" then
---     error("Failed to load inference_engine module: expected a table, got " .. type(InferenceEngine))
--- end
--- if type(Agent) ~= "table" then
---     error("Failed to load agent module: expected a table, got " .. type(Agent))
--- end
+-- Game state variables
+local gameState = {}
+local kb, ie, agent
+local aiTimer = 0
+local AI_TURN_DELAY = 1.0 -- Seconds between AI turns
+local isGameRunning = false
+local isGameOver = false
+local winMessage = ""
+local lastPercepts = {}
+local stepCount = 0
+local maxSteps = 100
 
--- Helper function to print the environment
-local function print_environment(agent_x, agent_y)
-    print("Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):")
-    local grid = Environment.get_grid()
-    for y = Environment.GRID_SIZE, 1, -1 do
-        local row = ""
-        for x = 1, Environment.GRID_SIZE do
-            local cell = grid[y][x]
-            if x == agent_x and y == agent_y then
-                row = row .. "A "
-            elseif cell.has_wumpus and cell.is_wumpus_alive then
-                row = row .. "W "
-            elseif cell.has_gold then
-                row = row .. "G "
-            elseif cell.has_pit then
-                row = row .. "P "
-            else
-                row = row .. ". "
-            end
+-- Console output for debugging
+local function debugPrint(...)
+    print(...)
+end
+
+-- Initialize game logic
+local function initializeGame()
+    -- Create game logic objects
+    kb = KnowledgeBase.new()
+    ie = InferenceEngine.new(kb)
+    agent = Agent.new(kb, ie)
+    
+    -- Load environment
+    Environment.load_grid_environment_from_file("sample1.txt")
+    
+    -- Reset game state
+    isGameRunning = true
+    isGameOver = false
+    winMessage = ""
+    stepCount = 0
+    aiTimer = 0
+    lastPercepts = {"None", "None", "None", "None", "None"}
+    
+    -- Initialize UI messages
+    UI.addMessage("Game started! Agent begins at [1,1]")
+    
+    debugPrint("Wumpus World initialized with sample1.txt")
+end
+
+-- Build game state for UI
+local function buildGameState()
+    local agent_x, agent_y = agent:getPosition()
+    
+    gameState = {
+        agent = {
+            x = agent_x,
+            y = agent_y,
+            direction = agent.direction,
+            score = agent:getScore(),
+            hasGold = agent.has_gold
+        },
+        kb = {
+            hasArrow = kb:hasArrow(),
+            facts = kb:getAllFacts()
+        },
+        percepts = lastPercepts,
+        environment = Environment.get_grid(),
+        visited = agent.visited_cells,
+        isGameOver = isGameOver,
+        winMessage = winMessage
+    }
+end
+
+-- Execute one AI step
+local function executeAIStep()
+    if not isGameRunning or isGameOver then return end
+    
+    stepCount = stepCount + 1
+    local agent_x, agent_y = agent:getPosition()
+    
+    -- Get current percepts
+    lastPercepts = Percepts.get_percepts(agent_x, agent_y, agent.has_bumped, agent.has_screamed)
+    
+    -- Log step info
+    debugPrint("Step " .. stepCount .. ": Agent at [" .. agent_x .. "," .. agent_y .. "]")
+    debugPrint("Percepts: [" .. table.concat(lastPercepts, ", ") .. "]")
+    
+    -- Check for specific percepts and play sounds
+    for _, percept in ipairs(lastPercepts) do
+        if percept == "Scream" then
+            UI.playSound("scream")
+        elseif percept == "Glitter" then
+            UI.playSound("grab")
+        elseif percept == "Bump" then
+            UI.playSound("bump")
         end
-        print(row)
+    end
+    
+    -- Execute agent step
+    local previousScore = agent:getScore()
+    isGameRunning = agent:step()
+    local newScore = agent:getScore()
+    
+    -- Determine what action was taken based on score change and agent state
+    if newScore < previousScore then
+        local scoreDiff = previousScore - newScore
+        if scoreDiff == 11 then -- Shot arrow (-10) + action (-1)
+            UI.playSound("shoot")
+            UI.addMessage("Agent shot an arrow!")
+        elseif scoreDiff == 1 then -- Regular move
+            UI.playSound("move")
+        elseif scoreDiff == 1000 then -- Death
+            UI.addMessage("Agent died!")
+            isGameOver = true
+            winMessage = "AGENT DIED - GAME OVER"
+        end
+    elseif newScore > previousScore then
+        local scoreDiff = newScore - previousScore
+        if scoreDiff == 999 then -- Won with gold (+1000 - 1)
+            UI.playSound("climb")
+            UI.addMessage("Agent escaped with gold!")
+            isGameOver = true
+            winMessage = "VICTORY! Agent escaped with the gold!"
+        end
+    end
+    
+    -- Check for maximum steps
+    if stepCount >= maxSteps then
+        UI.addMessage("Maximum steps reached!")
+        isGameOver = true
+        winMessage = "GAME OVER - Maximum steps reached"
+        isGameRunning = false
+    end
+    
+    -- Check if game should end
+    if not isGameRunning and not isGameOver then
+        isGameOver = true
+        winMessage = "GAME OVER"
+    end
+    
+    debugPrint("Score: " .. agent:getScore())
+end
+
+-- LÖVE 2D callback: Initialize
+function love.load()
+    -- Set up window
+    love.window.setTitle("Wumpus World AI")
+    love.window.setMode(800, 600, {resizable = false})
+    
+    -- Initialize UI
+    UI.load()
+    
+    -- Initialize game
+    initializeGame()
+    
+    debugPrint("LÖVE 2D Wumpus World loaded successfully!")
+end
+
+-- LÖVE 2D callback: Update
+function love.update(dt)
+    -- Update UI animations
+    UI.update(dt)
+    
+    -- Update AI timer
+    if isGameRunning and not isGameOver then
+        aiTimer = aiTimer + dt
+        if aiTimer >= AI_TURN_DELAY then
+            aiTimer = 0
+            executeAIStep()
+        end
+    end
+    
+    -- Build current game state for rendering
+    buildGameState()
+end
+
+-- LÖVE 2D callback: Draw
+function love.draw()
+    UI.draw(gameState)
+    
+    -- Draw debug info in top-left corner
+    love.graphics.setColor(1, 1, 1, 0.8)
+    love.graphics.print("Step: " .. stepCount .. "/" .. maxSteps, 10, 10)
+    if isGameRunning and not isGameOver then
+        local timeToNext = AI_TURN_DELAY - aiTimer
+        love.graphics.print("Next AI turn in: " .. string.format("%.1f", timeToNext) .. "s", 10, 30)
+    end
+    love.graphics.print("Press SPACE for manual step", 10, 50)
+    love.graphics.print("Press R to restart", 10, 70)
+    love.graphics.setColor(1, 1, 1, 1)
+end
+
+-- LÖVE 2D callback: Key pressed
+function love.keypressed(key)
+    if key == "space" then
+        -- Manual AI step trigger
+        if isGameRunning and not isGameOver then
+            executeAIStep()
+            aiTimer = 0 -- Reset timer
+        end
+    elseif key == "r" then
+        -- Restart game
+        initializeGame()
+        debugPrint("Game restarted!")
+    elseif key == "escape" then
+        -- Quit game
+        love.event.quit()
+    elseif key == "1" then
+        -- Load sample1.txt
+        Environment.load_grid_environment_from_file("sample1.txt")
+        initializeGame()
+        debugPrint("Loaded sample1.txt")
+    elseif key == "2" then
+        -- Load sample2.txt
+        Environment.load_grid_environment_from_file("sample2.txt")
+        initializeGame()
+        debugPrint("Loaded sample2.txt")
+    elseif key == "d" then
+        -- Toggle debug info
+        local facts = kb:getAllFacts()
+        debugPrint("=== KNOWLEDGE BASE FACTS ===")
+        for _, fact in ipairs(facts) do
+            debugPrint("  " .. fact)
+        end
+        debugPrint("=============================")
     end
 end
 
--- Initialize game
-local kb = KnowledgeBase.new()
-local ie = InferenceEngine.new(kb)
-local agent = Agent.new(kb, ie)
-
--- Load environment
-Environment.load_grid_environment_from_file("sample1.txt") -- Use the test file
-print("Starting Wumpus World Test")
-local agent_x, agent_y = agent:getPosition()
-print_environment(agent_x, agent_y)
-
--- Main game loop
-local max_steps = 100
-local step = 0
-local running = true
-
-while running and step < max_steps do
-    step = step + 1
-    running = agent:step()
-    agent_x, agent_y = agent:getPosition()
-    print_environment(agent_x, agent_y)
+-- LÖVE 2D callback: Quit
+function love.quit()
+    debugPrint("Wumpus World shutting down...")
 end
-
-if step >= max_steps then
-    print("Maximum steps reached. Game Over.")
-    print("Final Score: " .. agent:getScore())
-end
-
--- Close the output file
-io.output():close()

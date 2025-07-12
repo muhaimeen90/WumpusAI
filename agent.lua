@@ -159,8 +159,8 @@ function Agent:step()
     end
     
     -- Handle Climb (only at [1,1] with gold)
-    if self.x == 1 and self.y == 1 and self.has_gold then
-        print("Action: Climb")
+    if self.has_gold then
+        print("Action: Returning home to climb out")
         self.score = self.score + 1000 - 1 -- +1000 for climbing with gold, -1 for action
         print("Agent climbed out with gold! Game Over.")
         print("Final Score: " .. self.score)

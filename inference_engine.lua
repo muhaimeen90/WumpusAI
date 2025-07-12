@@ -72,6 +72,23 @@ function InferenceEngine:hasPit(x, y)
 end
 
 -- Infer if a square has a Wumpus
+-- function InferenceEngine:hasWumpus(x, y)
+--     -- Out-of-bounds, known no-Wumpus, or Wumpus is dead
+--     if x < 1 or x > self.gridSize or y < 1 or y > self.gridSize or
+--        self.kb:query("NoWumpus_" .. x .. "_" .. y) or
+--        not self.kb:isWumpusAlive() then
+--         return false
+--     end
+--     -- Check adjacent squares: Stench implies possible Wumpus
+--     local adjacents = self:getAdjacents(x, y)
+--     for _, adj in ipairs(adjacents) do
+--         local ax, ay = adj[1], adj[2]
+--         if self.kb:query("Stench_" .. ax .. "_" .. ay) then
+--             return true
+--         end
+--     end
+--     return false
+-- end
 function InferenceEngine:hasWumpus(x, y)
     -- Out-of-bounds, known no-Wumpus, or Wumpus is dead
     if x < 1 or x > self.gridSize or y < 1 or y > self.gridSize or
@@ -79,14 +96,41 @@ function InferenceEngine:hasWumpus(x, y)
        not self.kb:isWumpusAlive() then
         return false
     end
-    -- Check adjacent squares: Stench implies possible Wumpus
+    
+    -- Check if KB explicitly states there's a Wumpus here
+    if self.kb:query("Wumpus_" .. x .. "_" .. y) then
+        return true
+    end
+    
+    -- For more sophisticated inference:
+    -- If we have stench in ALL adjacent squares that are visited,
+    -- AND we have visited at least 2 adjacent squares,
+    -- AND all other possible Wumpus locations for those stenches are ruled out,
+    -- then this MUST be the Wumpus location
+    
     local adjacents = self:getAdjacents(x, y)
+    local visited_adjacents = 0
+    local all_have_stench = true
+    
     for _, adj in ipairs(adjacents) do
         local ax, ay = adj[1], adj[2]
-        if self.kb:query("Stench_" .. ax .. "_" .. ay) then
-            return true
+        if self:isVisited(ax, ay) then
+            visited_adjacents = visited_adjacents + 1
+            if not self.kb:query("Stench_" .. ax .. "_" .. ay) then
+                all_have_stench = false
+                break
+            end
         end
     end
+    
+    -- If we've visited at least 2 adjacent cells and they all have stench,
+    -- this is very likely the Wumpus location
+    if visited_adjacents >= 2 and all_have_stench then
+        self.kb:addFact("Wumpus_" .. x .. "_" .. y)
+        return true
+    end
+    
+    -- Not enough information to be certain
     return false
 end
 

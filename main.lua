@@ -28,7 +28,7 @@ local isGameOver = false
 local winMessage = ""
 local lastPercepts = {}
 local stepCount = 0
-local maxSteps = 100
+local maxSteps = 200
 
 -- Menu state
 local gameMode = "menu" -- "menu", "predefined", "random"

@@ -22,7 +22,7 @@ local UI = require("ui")
 local gameState = {}
 local kb, ie, agent
 local aiTimer = 0
-local AI_TURN_DELAY = 1.0 -- Seconds between AI turns
+local AI_TURN_DELAY = 0.5 -- Seconds between AI turns (faster)
 local isGameRunning = false
 local isGameOver = false
 local winMessage = ""
@@ -30,20 +30,32 @@ local lastPercepts = {}
 local stepCount = 0
 local maxSteps = 100
 
+-- Menu state
+local gameMode = "menu" -- "menu", "predefined", "random"
+local menuSelection = 1 -- 1 = predefined, 2 = random
+
 -- Console output for debugging
 local function debugPrint(...)
     print(...)
 end
 
 -- Initialize game logic
-local function initializeGame()
+local function initializeGame(useRandom)
     -- Create game logic objects
     kb = KnowledgeBase.new()
     ie = InferenceEngine.new(kb)
     agent = Agent.new(kb, ie)
     
-    -- Load environment
-    Environment.load_grid_environment_from_file("sample1.txt")
+    -- Load environment based on selection
+    if useRandom then
+        Environment.generate_random_environment()
+        UI.addMessage("Random environment generated!")
+        debugPrint("Wumpus World initialized with random environment")
+    else
+        Environment.load_grid_environment_from_file("sample1.txt")
+        UI.addMessage("Predefined environment loaded!")
+        debugPrint("Wumpus World initialized with sample1.txt")
+    end
     
     -- Reset game state
     isGameRunning = true
@@ -55,8 +67,6 @@ local function initializeGame()
     
     -- Initialize UI messages
     UI.addMessage("Game started! Agent begins at [1,1]")
-    
-    debugPrint("Wumpus World initialized with sample1.txt")
 end
 
 -- Build game state for UI
@@ -131,6 +141,7 @@ local function executeAIStep()
         if scoreDiff == 999 then -- Won with gold (+1000 - 1)
             UI.playSound("climb")
             UI.addMessage("Agent escaped with gold!")
+            UI.addMessage("Congratulations! You found the gold and escaped!")
             isGameOver = true
             winMessage = "VICTORY! Agent escaped with the gold!"
         end
@@ -162,8 +173,8 @@ function love.load()
     -- Initialize UI
     UI.load()
     
-    -- Initialize game
-    initializeGame()
+    -- Start in menu mode
+    gameMode = "menu"
     
     debugPrint("LÖVE 2D Wumpus World loaded successfully!")
 end
@@ -173,68 +184,93 @@ function love.update(dt)
     -- Update UI animations
     UI.update(dt)
     
-    -- Update AI timer
-    if isGameRunning and not isGameOver then
-        aiTimer = aiTimer + dt
-        if aiTimer >= AI_TURN_DELAY then
-            aiTimer = 0
-            executeAIStep()
+    -- Only update game logic if not in menu
+    if gameMode ~= "menu" then
+        -- Update AI timer
+        if isGameRunning and not isGameOver then
+            aiTimer = aiTimer + dt
+            if aiTimer >= AI_TURN_DELAY then
+                aiTimer = 0
+                executeAIStep()
+            end
         end
+        
+        -- Build current game state for rendering
+        buildGameState()
     end
-    
-    -- Build current game state for rendering
-    buildGameState()
 end
 
 -- LÖVE 2D callback: Draw
 function love.draw()
-    UI.draw(gameState)
-    
-    -- Draw debug info in top-left corner
-    love.graphics.setColor(1, 1, 1, 0.8)
-    love.graphics.print("Step: " .. stepCount .. "/" .. maxSteps, 10, 10)
-    if isGameRunning and not isGameOver then
-        local timeToNext = AI_TURN_DELAY - aiTimer
-        love.graphics.print("Next AI turn in: " .. string.format("%.1f", timeToNext) .. "s", 10, 30)
+    if gameMode == "menu" then
+        UI.drawMenu()
+    else
+        UI.draw(gameState)
+        
+        -- Draw debug info in top-left corner
+        love.graphics.setColor(1, 1, 1, 0.8)
+        love.graphics.print("Step: " .. stepCount .. "/" .. maxSteps, 10, 10)
+        if isGameRunning and not isGameOver then
+            local timeToNext = AI_TURN_DELAY - aiTimer
+            love.graphics.print("Next AI turn in: " .. string.format("%.1f", timeToNext) .. "s", 10, 30)
+        end
+        love.graphics.print("Press SPACE for manual step", 10, 50)
+        love.graphics.print("Press R to restart", 10, 70)
+        love.graphics.print("Press ESC for menu", 10, 90)
+        love.graphics.setColor(1, 1, 1, 1)
     end
-    love.graphics.print("Press SPACE for manual step", 10, 50)
-    love.graphics.print("Press R to restart", 10, 70)
-    love.graphics.setColor(1, 1, 1, 1)
 end
 
 -- LÖVE 2D callback: Key pressed
 function love.keypressed(key)
-    if key == "space" then
-        -- Manual AI step trigger
-        if isGameRunning and not isGameOver then
-            executeAIStep()
-            aiTimer = 0 -- Reset timer
+    if gameMode == "menu" then
+        if key == "1" then
+            menuSelection = "predefined"
+            gameMode = "game"
+            initializeGame(false) -- Use predefined environment
+        elseif key == "2" then
+            menuSelection = "random"
+            gameMode = "game"
+            initializeGame(true) -- Use random environment
+        elseif key == "escape" then
+            love.event.quit()
         end
-    elseif key == "r" then
-        -- Restart game
-        initializeGame()
-        debugPrint("Game restarted!")
-    elseif key == "escape" then
-        -- Quit game
-        love.event.quit()
-    elseif key == "1" then
-        -- Load sample1.txt
-        Environment.load_grid_environment_from_file("sample1.txt")
-        initializeGame()
-        debugPrint("Loaded sample1.txt")
-    elseif key == "2" then
-        -- Load sample2.txt
-        Environment.load_grid_environment_from_file("sample2.txt")
-        initializeGame()
-        debugPrint("Loaded sample2.txt")
-    elseif key == "d" then
-        -- Toggle debug info
-        local facts = kb:getAllFacts()
-        debugPrint("=== KNOWLEDGE BASE FACTS ===")
-        for _, fact in ipairs(facts) do
-            debugPrint("  " .. fact)
+    else
+        if key == "space" then
+            -- Manual AI step trigger
+            if isGameRunning and not isGameOver then
+                executeAIStep()
+                aiTimer = 0 -- Reset timer
+            end
+        elseif key == "r" then
+            -- Restart game with same mode
+            local useRandom = (menuSelection == "random")
+            initializeGame(useRandom)
+            debugPrint("Game restarted!")
+        elseif key == "escape" then
+            -- Return to menu
+            gameMode = "menu"
+            isGameRunning = false
+            isGameOver = false
+        elseif key == "1" then
+            -- Load sample1.txt
+            Environment.load_grid_environment_from_file("sample1.txt")
+            initializeGame(false)
+            debugPrint("Loaded sample1.txt")
+        elseif key == "2" then
+            -- Load sample2.txt
+            Environment.load_grid_environment_from_file("sample2.txt")
+            initializeGame(false)
+            debugPrint("Loaded sample2.txt")
+        elseif key == "d" then
+            -- Toggle debug info
+            local facts = kb:getAllFacts()
+            debugPrint("=== KNOWLEDGE BASE FACTS ===")
+            for _, fact in ipairs(facts) do
+                debugPrint("  " .. fact)
+            end
+            debugPrint("=============================")
         end
-        debugPrint("=============================")
     end
 end
 

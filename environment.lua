@@ -74,47 +74,121 @@ local function initialize_empty_grid()
     gold_location = nil
 end
 
--- Places objects (Wumpus, Gold, Pits) randomly on the grid
+-- Places objects (Wumpus, Gold, Pits) randomly on the grid with controlled distribution
 function Environment.generate_random_environment()
     initialize_empty_grid()
-
-    -- Place Wumpus (not in [1,1])
-    repeat
-        local wx = math.random(1, Environment.GRID_SIZE)
-        local wy = math.random(1, Environment.GRID_SIZE)
-        if not (wx == Environment.START_X and wy == Environment.START_Y) then
-            Environment.set_cell(wx, wy, { has_wumpus = true, is_wumpus_alive = true })
-            wumpus_location = {x = wx, y = wy}
-            break
-        end
-    until false
-
-    -- Place Gold (not in [1,1])
-    repeat
-        local gx = math.random(1, Environment.GRID_SIZE)
-        local gy = math.random(1, Environment.GRID_SIZE)
-        if not (gx == Environment.START_X and gy == Environment.START_Y) and not (gx == wumpus_location.x and gy == wumpus_location.y) then
-            Environment.set_cell(gx, gy, { has_gold = true })
-            gold_location = {x = gx, y = gy}
-            break
-        end
-    until false
-
-    -- Place Pits (probability 0.2, not in [1,1])
+    
+    -- Create a list of valid positions (excluding [1,1] and adjacent cells for safety)
+    local valid_positions = {}
+    local safe_zone = {
+        {1, 1}, {1, 2}, {2, 1}, {2, 2}  -- Keep starting area safe
+    }
+    
     for y = 1, Environment.GRID_SIZE do
         for x = 1, Environment.GRID_SIZE do
-            if not (x == Environment.START_X and y == Environment.START_Y) then
-                if math.random() < 0.2 then -- 20% chance
-                    Environment.set_cell(x, y, { has_pit = true })
+            local is_safe_zone = false
+            for _, safe_pos in ipairs(safe_zone) do
+                if x == safe_pos[1] and y == safe_pos[2] then
+                    is_safe_zone = true
+                    break
                 end
+            end
+            if not is_safe_zone then
+                table.insert(valid_positions, {x = x, y = y})
             end
         end
     end
 
-    -- Ensure [1,1] is safe
-    Environment.set_cell(Environment.START_X, Environment.START_Y, { has_wumpus = false, is_wumpus_alive = false, has_pit = false, has_gold = false })
+    -- Place exactly 3 Wumpuses
+    local num_wumpuses = 3
+    local placed_wumpuses = 0
+    local wumpus_locations = {}
+    
+    for i = 1, num_wumpuses do
+        if #valid_positions > 0 then
+            local wumpus_index = math.random(1, #valid_positions)
+            local wumpus_pos = valid_positions[wumpus_index]
+            Environment.set_cell(wumpus_pos.x, wumpus_pos.y, { has_wumpus = true, is_wumpus_alive = true })
+            table.insert(wumpus_locations, {x = wumpus_pos.x, y = wumpus_pos.y})
+            table.remove(valid_positions, wumpus_index)
+            placed_wumpuses = placed_wumpuses + 1
+        end
+    end
+    
+    -- Set the first wumpus as the primary one for legacy compatibility
+    if #wumpus_locations > 0 then
+        wumpus_location = wumpus_locations[1]
+    end
 
-    print("Random environment generated.")
+    -- Place Gold (not in same cell as any Wumpus)
+    local gold_index = math.random(1, #valid_positions)
+    local gold_pos = valid_positions[gold_index]
+    Environment.set_cell(gold_pos.x, gold_pos.y, { has_gold = true })
+    gold_location = {x = gold_pos.x, y = gold_pos.y}
+    table.remove(valid_positions, gold_index)
+
+    -- Place exactly 3 Pits strategically distributed
+    local num_pits = 3
+    local placed_pits = 0
+    
+    -- Divide grid into quadrants for better distribution
+    local quadrants = {
+        {min_x = 1, max_x = 5, min_y = 1, max_y = 5},      -- Top-left
+        {min_x = 6, max_x = 10, min_y = 1, max_y = 5},     -- Top-right
+        {min_x = 1, max_x = 5, min_y = 6, max_y = 10},     -- Bottom-left
+        {min_x = 6, max_x = 10, min_y = 6, max_y = 10}     -- Bottom-right
+    }
+    
+    -- Try to place at least one pit in different quadrants
+    for _, quadrant in ipairs(quadrants) do
+        if placed_pits >= num_pits then break end
+        
+        -- Find valid positions in this quadrant
+        local quadrant_positions = {}
+        for _, pos in ipairs(valid_positions) do
+            if pos.x >= quadrant.min_x and pos.x <= quadrant.max_x and
+               pos.y >= quadrant.min_y and pos.y <= quadrant.max_y then
+                table.insert(quadrant_positions, pos)
+            end
+        end
+        
+        -- Place a pit in this quadrant if possible
+        if #quadrant_positions > 0 and math.random() < 0.7 then -- 70% chance per quadrant
+            local pit_index = math.random(1, #quadrant_positions)
+            local pit_pos = quadrant_positions[pit_index]
+            
+            -- Find and remove from main valid_positions list
+            for i, pos in ipairs(valid_positions) do
+                if pos.x == pit_pos.x and pos.y == pit_pos.y then
+                    Environment.set_cell(pit_pos.x, pit_pos.y, { has_pit = true })
+                    table.remove(valid_positions, i)
+                    placed_pits = placed_pits + 1
+                    break
+                end
+            end
+        end
+    end
+    
+    -- Fill remaining pit slots randomly if needed
+    while placed_pits < num_pits and #valid_positions > 0 do
+        local pit_index = math.random(1, #valid_positions)
+        local pit_pos = valid_positions[pit_index]
+        Environment.set_cell(pit_pos.x, pit_pos.y, { has_pit = true })
+        table.remove(valid_positions, pit_index)
+        placed_pits = placed_pits + 1
+    end
+
+    -- Ensure starting area is completely safe
+    for _, safe_pos in ipairs(safe_zone) do
+        Environment.set_cell(safe_pos[1], safe_pos[2], { 
+            has_wumpus = false, 
+            is_wumpus_alive = false, 
+            has_pit = false, 
+            has_gold = false 
+        })
+    end
+
+    print("Random environment generated with " .. placed_pits .. " pits, " .. placed_wumpuses .. " Wumpuses, and 1 Gold.")
 end
 
 -- Loads environment from a coordinate-based file
@@ -246,18 +320,36 @@ function Environment.get_grid()
     return world_grid
 end
 
--- Returns the Wumpus's current alive status (true/false)
+-- Returns true if any Wumpus is alive in the world
 function Environment.is_wumpus_alive()
-    if wumpus_location then
-        local cell = Environment.get_cell(wumpus_location.x, wumpus_location.y)
-        return cell and cell.is_wumpus_alive
+    for y = 1, Environment.GRID_SIZE do
+        for x = 1, Environment.GRID_SIZE do
+            local cell = Environment.get_cell(x, y)
+            if cell and cell.has_wumpus and cell.is_wumpus_alive then
+                return true
+            end
+        end
     end
-    return false -- No wumpus in the world
+    return false -- No living wumpus in the world
 end
 
--- Returns the Wumpus's location
+-- Returns the primary Wumpus's location (for legacy compatibility)
 function Environment.get_wumpus_location()
     return wumpus_location
+end
+
+-- Returns all Wumpus locations in the world
+function Environment.get_all_wumpus_locations()
+    local wumpus_locations = {}
+    for y = 1, Environment.GRID_SIZE do
+        for x = 1, Environment.GRID_SIZE do
+            local cell = Environment.get_cell(x, y)
+            if cell and cell.has_wumpus then
+                table.insert(wumpus_locations, {x = x, y = y, alive = cell.is_wumpus_alive})
+            end
+        end
+    end
+    return wumpus_locations
 end
 
 -- Returns the Gold's location

@@ -1,6 +1,3 @@
--- percepts.lua
--- Generates percepts for the agent based on its location in the environment.
--- Team Member 1: Environment & Percepts
 
 local Percepts = {}
 

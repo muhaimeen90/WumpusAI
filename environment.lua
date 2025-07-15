@@ -1,7 +1,3 @@
--- environment.lua
--- Handles the Wumpus World grid, its contents, and initialization.
--- Team Member 1: Environment & Percepts
-
 local Environment = {}
 
 -- Constants for grid dimensions
@@ -196,44 +192,44 @@ end
 -- W x y
 -- G x y
 -- P x y
-function Environment.load_environment_from_file(filename)
-    initialize_empty_grid()
+-- function Environment.load_environment_from_file(filename)
+--     initialize_empty_grid()
 
-    local file = io.open("env_samples/" .. filename, "r")
-    if not file then
-        error("Could not open environment file: " .. filename)
-    end
+--     local file = io.open("env_samples/" .. filename, "r")
+--     if not file then
+--         error("Could not open environment file: " .. filename)
+--     end
 
-    for line in file:lines() do
-        local type_char, x_str, y_str = line:match("^(%S+)%s+(%d+)%s+(%d+)$")
-        local x = tonumber(x_str)
-        local y = tonumber(y_str)
+--     for line in file:lines() do
+--         local type_char, x_str, y_str = line:match("^(%S+)%s+(%d+)%s+(%d+)$")
+--         local x = tonumber(x_str)
+--         local y = tonumber(y_str)
 
-        if not Environment.is_valid_coord(x, y) then
-            print(string.format("Warning: Invalid coordinates %d,%d in file for %s. Skipping.", x, y, type_char))
-            goto continue -- Skip to next line
-        end
+--         if not Environment.is_valid_coord(x, y) then
+--             print(string.format("Warning: Invalid coordinates %d,%d in file for %s. Skipping.", x, y, type_char))
+--             goto continue -- Skip to next line
+--         end
 
-        if type_char == "W" then
-            Environment.set_cell(x, y, { has_wumpus = true, is_wumpus_alive = true })
-            wumpus_location = {x = x, y = y}
-        elseif type_char == "G" then
-            Environment.set_cell(x, y, { has_gold = true })
-            gold_location = {x = x, y = y}
-        elseif type_char == "P" then
-            Environment.set_cell(x, y, { has_pit = true })
-        else
-            print("Warning: Unknown entity type '" .. type_char .. "' in environment file. Skipping.")
-        end
-        ::continue::
-    end
-    file:close()
+--         if type_char == "W" then
+--             Environment.set_cell(x, y, { has_wumpus = true, is_wumpus_alive = true })
+--             wumpus_location = {x = x, y = y}
+--         elseif type_char == "G" then
+--             Environment.set_cell(x, y, { has_gold = true })
+--             gold_location = {x = x, y = y}
+--         elseif type_char == "P" then
+--             Environment.set_cell(x, y, { has_pit = true })
+--         else
+--             print("Warning: Unknown entity type '" .. type_char .. "' in environment file. Skipping.")
+--         end
+--         ::continue::
+--     end
+--     file:close()
 
-    -- Ensure [1,1] is safe, as per Wumpus World rules. This overrides file content if any.
-    Environment.set_cell(Environment.START_X, Environment.START_Y, { has_wumpus = false, is_wumpus_alive = false, has_pit = false, has_gold = false })
+--     -- Ensure [1,1] is safe, as per Wumpus World rules. This overrides file content if any.
+--     Environment.set_cell(Environment.START_X, Environment.START_Y, { has_wumpus = false, is_wumpus_alive = false, has_pit = false, has_gold = false })
 
-    print("Environment loaded from file: " .. filename)
-end
+--     print("Environment loaded from file: " .. filename)
+-- end
 
 -- Loads environment from a grid-based file (as per project description)
 -- Expected format: 10 lines, each with 10 characters (W, G, P, or -)
@@ -312,8 +308,6 @@ function Environment.remove_gold_at(x, y)
     return false -- No gold to pick up
 end
 
--- --- Query Functions for Percepts ---
--- These are used by percepts.lua and potentially the UI.
 
 -- Returns the full grid for UI or debugging purposes
 function Environment.get_grid()

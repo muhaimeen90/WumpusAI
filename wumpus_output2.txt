@@ -1,0 +1,2360 @@
+Grid environment loaded from file: sample1.txt
+Starting Wumpus World Test
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+A . . W . . P . . . 
+
+Step 1: Agent at [1,1], Direction: right
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  Safe_1_2
+  NoBump_1_1
+  NoBreeze_1_1
+  NoGlitter_1_1
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  Safe_2_1
+  Safe_1_1
+  WumpusAlive_true
+  HasArrow_true
+Score: 0
+Action: Move to [2,1]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. A . W . . P . . . 
+
+Step 2: Agent at [2,1], Direction: right
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoBump_1_1
+  Safe_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  Safe_2_2
+  Safe_1_2
+  Safe_1_1
+  NoBreeze_1_1
+  NoWumpus_2_1
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  Safe_2_1
+  NoBreeze_2_1
+  NoPit_2_1
+  WumpusAlive_true
+  HasArrow_true
+Score: -1
+Action: Move to [3,1]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . A W . . P . . . 
+
+Step 3: Agent at [3,1], Direction: right
+Percepts: [Stench, Breeze, None, None, None]
+Knowledge Base Facts:
+  Pit_4_1
+  NoBump_1_1
+  Safe_3_1
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  Safe_2_2
+  Wumpus_3_2
+  Pit_3_2
+  Safe_1_2
+  Wumpus_4_1
+  Safe_1_1
+  NoBreeze_1_1
+  NoWumpus_3_1
+  NoBump_3_1
+  NoGlitter_3_1
+  Stench_3_1
+  NoWumpus_2_1
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoBreeze_2_1
+  Safe_2_1
+  Breeze_3_1
+  NoPit_2_1
+  WumpusAlive_true
+  HasArrow_true
+Score: -2
+Action: Shoot
+Wumpus at [4,1] has been killed!
+Action: Move to [2,1]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. A . . . . P . . . 
+
+Step 4: Agent at [2,1], Direction: left
+Percepts: [None, None, None, None, Scream]
+Knowledge Base Facts:
+  Pit_4_1
+  NoBump_1_1
+  Safe_3_1
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  Safe_2_2
+  Scream
+  NoArrow
+  Wumpus_3_2
+  Pit_3_2
+  Safe_1_2
+  Wumpus_4_1
+  Safe_1_1
+  NoBreeze_1_1
+  NoWumpus_3_1
+  NoBump_3_1
+  NoGlitter_3_1
+  Stench_3_1
+  NoWumpus_2_1
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoBreeze_2_1
+  Safe_2_1
+  Breeze_3_1
+  NoPit_2_1
+  WumpusAlive_false
+  HasArrow_false
+Score: -14
+Action: Move to [2,2]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. A P . . . . . . . 
+. . . . . . P . . . 
+
+Step 5: Agent at [2,2], Direction: up
+Percepts: [None, Breeze, None, None, None]
+Knowledge Base Facts:
+  Safe_3_1
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoBump_3_1
+  Safe_2_2
+  NoPit_2_2
+  NoBreeze_1_1
+  NoGlitter_2_2
+  Stench_3_1
+  NoWumpus_2_1
+  Breeze_2_2
+  Wumpus_3_2
+  Scream
+  NoWumpus_3_1
+  Pit_4_1
+  NoBump_1_1
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  NoBump_2_2
+  Safe_1_2
+  Safe_1_1
+  Safe_2_1
+  NoWumpus_2_2
+  NoPit_2_1
+  Breeze_3_1
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoGlitter_3_1
+  NoStench_2_2
+  Wumpus_4_1
+  Pit_3_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -15
+Action: Move to [1,2]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+A . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 6: Agent at [1,2], Direction: left
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  Safe_3_1
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoBump_3_1
+  Safe_2_2
+  NoPit_2_2
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoGlitter_1_2
+  Stench_3_1
+  NoWumpus_2_1
+  Breeze_2_2
+  Wumpus_3_2
+  Scream
+  NoWumpus_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_1_1
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  NoBump_2_2
+  Safe_1_3
+  NoPit_1_2
+  NoBump_1_2
+  Safe_1_2
+  Pit_3_2
+  Safe_1_1
+  NoStench_1_2
+  Safe_2_1
+  NoWumpus_2_2
+  NoPit_2_1
+  Breeze_3_1
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoGlitter_3_1
+  NoStench_2_2
+  Wumpus_4_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -16
+Action: Move to [1,3]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+A . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 7: Agent at [1,3], Direction: up
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  Safe_3_1
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  Safe_2_2
+  NoWumpus_1_3
+  Safe_2_3
+  NoBump_1_3
+  NoPit_2_2
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoGlitter_1_2
+  Stench_3_1
+  NoWumpus_2_1
+  Breeze_2_2
+  Wumpus_3_2
+  Scream
+  NoWumpus_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_1_1
+  Safe_1_4
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  NoGlitter_3_1
+  NoBreeze_1_3
+  NoStench_1_3
+  NoBump_2_2
+  Safe_1_3
+  NoPit_1_2
+  NoBump_1_2
+  Safe_1_2
+  Pit_3_2
+  Safe_1_1
+  NoStench_1_2
+  Safe_2_1
+  NoWumpus_2_2
+  NoPit_2_1
+  Breeze_3_1
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoGlitter_1_3
+  NoStench_2_2
+  Wumpus_4_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -17
+Action: Move to [2,3]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. A . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 8: Agent at [2,3], Direction: right
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoStench_2_3
+  Safe_3_1
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  Safe_2_2
+  NoWumpus_1_3
+  Safe_2_3
+  NoBump_1_3
+  NoGlitter_2_3
+  NoBreeze_2_3
+  NoPit_2_2
+  Safe_3_3
+  NoBreeze_1_1
+  Pit_3_2
+  NoGlitter_2_2
+  NoGlitter_1_2
+  Stench_3_1
+  NoWumpus_2_1
+  Breeze_2_2
+  Wumpus_3_2
+  Safe_1_4
+  NoBump_2_3
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_2_1
+  NoBump_2_1
+  NoGlitter_1_1
+  NoGlitter_3_1
+  NoBreeze_1_3
+  NoStench_1_3
+  NoBump_2_2
+  Safe_1_3
+  NoPit_1_2
+  NoBump_1_2
+  Safe_1_2
+  NoWumpus_2_3
+  Safe_1_1
+  NoStench_1_2
+  Safe_2_1
+  NoWumpus_2_2
+  NoPit_2_1
+  Breeze_3_1
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_1_1
+  NoStench_1_1
+  NoGlitter_1_3
+  NoStench_2_2
+  Wumpus_4_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -18
+Action: Move to [3,3]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. . A . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 9: Agent at [3,3], Direction: right
+Percepts: [None, Breeze, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoPit_2_2
+  NoWumpus_2_2
+  NoGlitter_1_2
+  NoWumpus_2_1
+  Breeze_2_2
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  NoBump_1_1
+  NoPit_2_3
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_3_1
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_3
+  NoBreeze_2_3
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_3_1
+  Breeze_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_3_3
+  NoBump_2_2
+  Pit_4_3
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_1_3
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -19
+Action: Move to [2,3]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . . P . . . . 
+. A . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 10: Agent at [2,3], Direction: left
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoPit_2_2
+  NoWumpus_2_2
+  NoGlitter_1_2
+  NoWumpus_2_1
+  Breeze_2_2
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  NoBump_1_1
+  NoPit_2_3
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_3_1
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_3
+  NoBreeze_2_3
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_3_1
+  Breeze_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_3_3
+  NoBump_2_2
+  Pit_4_3
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_1_3
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -20
+Action: Move to [2,4]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. A . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 11: Agent at [2,4], Direction: up
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoWumpus_2_2
+  NoGlitter_1_2
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  NoBump_1_1
+  NoPit_2_3
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_3_1
+  NoPit_2_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBreeze_2_3
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_3_1
+  Breeze_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_3_3
+  NoWumpus_2_4
+  NoBump_2_2
+  NoGlitter_2_4
+  NoStench_1_3
+  Pit_4_3
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -21
+Action: Move to [3,4]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . A . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 12: Agent at [3,4], Direction: right
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  NoBump_1_1
+  NoPit_2_3
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBreeze_2_3
+  NoBump_3_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  Safe_3_3
+  Wumpus_3_2
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Pit_4_1
+  NoWumpus_1_2
+  NoPit_3_1
+  NoStench_2_1
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoStench_3_4
+  NoWumpus_2_4
+  NoBump_2_2
+  NoGlitter_2_4
+  NoStench_1_3
+  Pit_4_3
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -22
+Action: Move to [4,4]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . A . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 13: Agent at [4,4], Direction: right
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBreeze_2_3
+  NoBump_3_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoGlitter_2_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoStench_3_4
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -23
+Action: Move to [5,4]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . . A P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 14: Agent at [5,4], Direction: right
+Percepts: [None, Breeze, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  Pit_5_5
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  Pit_6_4
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  Breeze_5_4
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoGlitter_2_4
+  NoPit_5_4
+  NoBreeze_2_3
+  NoGlitter_5_4
+  NoBump_3_4
+  NoBreeze_1_1
+  NoStench_5_4
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoWumpus_5_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoStench_3_4
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -24
+Action: Move to [4,4]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . G . . . . . . 
+. . . A . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 15: Agent at [4,4], Direction: left
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  Pit_5_5
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  Pit_6_4
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  Breeze_5_4
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoGlitter_2_4
+  NoPit_5_4
+  NoBreeze_2_3
+  NoGlitter_5_4
+  NoBump_3_4
+  NoBreeze_1_1
+  NoStench_5_4
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoWumpus_5_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoStench_3_4
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  NoWumpus_3_3
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_2_1
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoGlitter_1_1
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -25
+Action: Move to [4,5]
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . A . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 16: Agent at [4,5], Direction: up
+Percepts: [None, None, Glitter, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  Pit_5_5
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  Pit_6_4
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  Breeze_5_4
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  Safe_2_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_5_5
+  NoWumpus_4_5
+  NoPit_4_5
+  NoWumpus_3_3
+  Safe_3_1
+  NoGlitter_1_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoStench_4_5
+  NoGlitter_2_4
+  NoPit_5_4
+  NoBreeze_2_3
+  NoGlitter_5_4
+  NoBump_3_4
+  NoBreeze_1_1
+  NoStench_5_4
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoWumpus_5_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoStench_3_4
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  Glitter_4_5
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_4_6
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoBreeze_4_5
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -26
+Action: Grab
+Gold removed from [4,5].
+Action: Move to [3,5] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . A . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 17: Agent at [3,5], Direction: left
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  Pit_5_5
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoGlitter_3_5
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoWumpus_2_2
+  NoGlitter_1_2
+  Pit_6_4
+  NoWumpus_2_1
+  Breeze_2_2
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  Breeze_5_4
+  Safe_3_6
+  NoWumpus_3_5
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoPit_3_5
+  NoBump_3_5
+  NoStench_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  Safe_2_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_5_5
+  NoWumpus_4_5
+  NoPit_4_5
+  NoWumpus_3_3
+  Safe_3_1
+  NoGlitter_1_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoStench_4_5
+  NoGlitter_2_4
+  NoPit_5_4
+  NoBreeze_2_3
+  NoGlitter_5_4
+  NoBump_3_4
+  NoBreeze_1_1
+  NoStench_5_4
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoWumpus_5_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoBreeze_3_5
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  Glitter_4_5
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  NoPit_1_1
+  Safe_1_3
+  Safe_4_6
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoBreeze_4_5
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -28
+Action: Move to [2,5] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. A . . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 18: Agent at [2,5], Direction: left
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoStench_2_3
+  Pit_5_5
+  NoArrow
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoGlitter_3_5
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoPit_1_1
+  NoWumpus_2_2
+  NoGlitter_1_2
+  Pit_6_4
+  NoWumpus_2_1
+  Breeze_2_2
+  Safe_1_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  NoWumpus_3_1
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoBump_1_1
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoGlitter_2_1
+  NoBump_2_1
+  NoWumpus_2_5
+  NoPit_3_5
+  NoBump_2_5
+  Pit_4_3
+  Breeze_5_4
+  NoBreeze_2_5
+  NoStench_2_5
+  Safe_3_6
+  NoWumpus_3_5
+  NoWumpus_2_3
+  Safe_1_4
+  Pit_3_4
+  NoPit_2_5
+  NoBump_3_5
+  NoStench_3_4
+  NoWumpus_4_4
+  Pit_1_2
+  NoWumpus_1_1
+  Safe_2_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_5_5
+  NoWumpus_4_5
+  NoPit_4_5
+  NoWumpus_3_3
+  Safe_3_1
+  NoGlitter_1_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoBump_2_4
+  Wumpus_4_1
+  NoGlitter_3_3
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoStench_4_5
+  NoGlitter_2_4
+  NoPit_5_4
+  NoBreeze_2_3
+  NoGlitter_5_4
+  NoBump_3_4
+  NoBreeze_1_1
+  NoStench_5_4
+  NoGlitter_2_2
+  NoPit_1_2
+  Stench_3_1
+  NoWumpus_5_4
+  Safe_3_3
+  Wumpus_3_2
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Breeze_3_1
+  Safe_4_3
+  Pit_4_1
+  NoWumpus_1_2
+  NoBump_4_4
+  NoGlitter_2_5
+  NoPit_3_1
+  NoStench_2_1
+  NoStench_4_4
+  Safe_3_5
+  NoStench_3_3
+  NoGlitter_3_4
+  NoBreeze_3_5
+  NoWumpus_2_4
+  NoBump_2_2
+  Safe_4_5
+  NoStench_1_3
+  NoBreeze_4_4
+  Safe_1_2
+  Glitter_4_5
+  Safe_1_1
+  NoGlitter_2_3
+  NoStench_2_2
+  NoGlitter_1_3
+  NoStench_1_1
+  Safe_2_6
+  Safe_1_3
+  Safe_4_6
+  NoBump_1_2
+  NoBump_2_3
+  NoStench_2_4
+  NoBreeze_1_3
+  NoBreeze_4_5
+  NoBreeze_1_2
+  WumpusAlive_false
+  HasArrow_false
+Score: -29
+Action: Move to [1,5] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+A . . . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 19: Agent at [1,5], Direction: left
+Percepts: [Stench, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoPit_1_5
+  Pit_5_5
+  NoArrow
+  Safe_3_6
+  NoWumpus_3_3
+  NoGlitter_3_5
+  NoWumpus_2_2
+  Pit_6_4
+  NoWumpus_2_1
+  NoBreeze_2_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoBump_2_1
+  Stench_1_5
+  Safe_1_4
+  NoPit_2_5
+  NoWumpus_4_4
+  NoBump_2_5
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoStench_4_5
+  NoGlitter_3_3
+  Safe_3_5
+  NoBreeze_2_3
+  NoBump_3_4
+  NoWumpus_1_5
+  Stench_3_1
+  NoWumpus_5_4
+  NoPit_1_1
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_1_1
+  NoBreeze_3_5
+  Safe_1_6
+  NoBump_2_2
+  Safe_4_5
+  NoBreeze_4_4
+  Glitter_4_5
+  Safe_2_6
+  NoGlitter_5_4
+  Safe_4_6
+  NoBreeze_1_5
+  NoBreeze_4_5
+  NoBreeze_1_2
+  NoStench_2_3
+  NoWumpus_4_5
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoStench_2_2
+  NoGlitter_1_2
+  Breeze_2_2
+  Safe_2_1
+  NoWumpus_3_1
+  NoBump_1_1
+  Safe_5_5
+  NoGlitter_2_1
+  NoGlitter_1_5
+  Breeze_5_4
+  NoWumpus_2_3
+  Pit_3_4
+  Pit_1_2
+  NoStench_1_1
+  NoWumpus_3_5
+  Safe_1_5
+  Wumpus_4_1
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBump_1_5
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  NoStench_3_4
+  Safe_3_3
+  Wumpus_3_2
+  Breeze_3_1
+  NoPit_5_4
+  NoWumpus_1_2
+  NoGlitter_2_5
+  Safe_4_3
+  NoStench_3_3
+  NoBreeze_1_3
+  NoBump_3_5
+  NoPit_4_5
+  NoBump_1_2
+  Safe_1_3
+  NoGlitter_1_3
+  NoGlitter_2_3
+  Safe_1_2
+  NoStench_1_3
+  Safe_1_1
+  NoWumpus_2_4
+  NoGlitter_3_4
+  NoStench_4_4
+  NoBump_4_4
+  Pit_4_1
+  NoStench_5_4
+  NoGlitter_2_4
+  NoBump_2_4
+  NoBump_2_3
+  NoStench_2_4
+  NoStench_2_5
+  NoWumpus_2_5
+  NoPit_3_5
+  WumpusAlive_false
+  HasArrow_false
+Score: -30
+Action: Move to [1,4] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . . . . . . . . 
+A . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 20: Agent at [1,4], Direction: down
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoPit_1_5
+  Pit_5_5
+  NoArrow
+  Safe_3_6
+  NoWumpus_3_3
+  NoGlitter_3_5
+  NoWumpus_2_2
+  Pit_6_4
+  NoWumpus_2_1
+  NoBreeze_2_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoBump_2_1
+  Stench_1_5
+  Safe_1_4
+  NoPit_2_5
+  NoWumpus_4_4
+  NoBump_2_5
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoStench_4_5
+  NoGlitter_3_3
+  Safe_3_5
+  NoBreeze_2_3
+  NoBump_3_4
+  NoWumpus_1_5
+  Stench_3_1
+  NoWumpus_5_4
+  NoPit_1_1
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_1_1
+  NoBreeze_3_5
+  Safe_1_6
+  NoBump_2_2
+  Safe_4_5
+  NoBreeze_4_4
+  Glitter_4_5
+  Safe_2_6
+  NoGlitter_5_4
+  Safe_4_6
+  NoBreeze_1_5
+  NoBreeze_4_5
+  NoBreeze_1_2
+  NoStench_2_3
+  NoWumpus_4_5
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoStench_2_2
+  NoGlitter_1_2
+  Breeze_2_2
+  Safe_2_1
+  NoWumpus_3_1
+  NoBump_1_1
+  Safe_5_5
+  NoGlitter_2_1
+  NoPit_1_4
+  NoGlitter_1_5
+  Breeze_5_4
+  NoWumpus_2_3
+  Pit_3_4
+  Pit_1_2
+  NoStench_1_1
+  NoWumpus_3_5
+  Safe_1_5
+  Wumpus_4_1
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBump_1_5
+  NoStench_1_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  NoStench_3_4
+  Safe_3_3
+  Wumpus_3_2
+  Breeze_3_1
+  NoPit_5_4
+  NoWumpus_1_2
+  NoWumpus_1_4
+  NoGlitter_2_5
+  NoBump_1_4
+  Safe_4_3
+  NoGlitter_1_4
+  Safe_1_3
+  NoStench_3_3
+  NoBreeze_1_3
+  NoBump_3_5
+  NoPit_4_5
+  NoBump_1_2
+  NoBreeze_1_4
+  NoGlitter_1_3
+  NoGlitter_2_3
+  Safe_1_2
+  NoStench_1_3
+  Safe_1_1
+  NoWumpus_2_4
+  NoGlitter_3_4
+  NoStench_4_4
+  NoBump_4_4
+  Pit_4_1
+  NoStench_5_4
+  NoGlitter_2_4
+  NoBump_2_4
+  NoBump_2_3
+  NoStench_2_4
+  NoStench_2_5
+  NoWumpus_2_5
+  NoPit_3_5
+  WumpusAlive_false
+  HasArrow_false
+Score: -31
+Action: Move to [1,3] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . . . . . . . . 
+. . . . . P . . . . 
+A . . . . . P . . . 
+. . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 21: Agent at [1,3], Direction: down
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoPit_1_5
+  Pit_5_5
+  NoArrow
+  Safe_3_6
+  NoWumpus_3_3
+  NoGlitter_3_5
+  NoWumpus_2_2
+  Pit_6_4
+  NoWumpus_2_1
+  NoBreeze_2_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoBump_2_1
+  Stench_1_5
+  Safe_1_4
+  NoPit_2_5
+  NoWumpus_4_4
+  NoBump_2_5
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoStench_4_5
+  NoGlitter_3_3
+  Safe_3_5
+  NoBreeze_2_3
+  NoBump_3_4
+  NoWumpus_1_5
+  Stench_3_1
+  NoWumpus_5_4
+  NoPit_1_1
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_1_1
+  NoBreeze_3_5
+  Safe_1_6
+  NoBump_2_2
+  Safe_4_5
+  NoBreeze_4_4
+  Glitter_4_5
+  Safe_2_6
+  NoGlitter_5_4
+  Safe_4_6
+  NoBreeze_1_5
+  NoBreeze_4_5
+  NoBreeze_1_2
+  NoStench_2_3
+  NoWumpus_4_5
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoStench_2_2
+  NoGlitter_1_2
+  Breeze_2_2
+  Safe_2_1
+  NoWumpus_3_1
+  NoBump_1_1
+  Safe_5_5
+  NoGlitter_2_1
+  NoPit_1_4
+  NoGlitter_1_5
+  Breeze_5_4
+  NoWumpus_2_3
+  Pit_3_4
+  Pit_1_2
+  NoStench_1_1
+  NoWumpus_3_5
+  Safe_1_5
+  Wumpus_4_1
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBump_1_5
+  NoStench_1_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  NoStench_3_4
+  Safe_3_3
+  Wumpus_3_2
+  Breeze_3_1
+  NoPit_5_4
+  NoWumpus_1_2
+  NoWumpus_1_4
+  NoGlitter_2_5
+  NoBump_1_4
+  Safe_4_3
+  NoGlitter_1_4
+  Safe_1_3
+  NoStench_3_3
+  NoBreeze_1_3
+  NoBump_3_5
+  NoPit_4_5
+  NoBump_1_2
+  NoBreeze_1_4
+  NoGlitter_1_3
+  NoGlitter_2_3
+  Safe_1_2
+  NoStench_1_3
+  Safe_1_1
+  NoWumpus_2_4
+  NoGlitter_3_4
+  NoStench_4_4
+  NoBump_4_4
+  Pit_4_1
+  NoStench_5_4
+  NoGlitter_2_4
+  NoBump_2_4
+  NoBump_2_3
+  NoStench_2_4
+  NoStench_2_5
+  NoWumpus_2_5
+  NoPit_3_5
+  WumpusAlive_false
+  HasArrow_false
+Score: -32
+Action: Move to [1,2] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+A . P . . . . . . . 
+. . . . . . P . . . 
+
+Step 22: Agent at [1,2], Direction: down
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoPit_1_5
+  Pit_5_5
+  NoArrow
+  Safe_3_6
+  NoWumpus_3_3
+  NoGlitter_3_5
+  NoWumpus_2_2
+  Pit_6_4
+  NoWumpus_2_1
+  NoBreeze_2_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoBump_2_1
+  Stench_1_5
+  Safe_1_4
+  NoPit_2_5
+  NoWumpus_4_4
+  NoBump_2_5
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoStench_4_5
+  NoGlitter_3_3
+  Safe_3_5
+  NoBreeze_2_3
+  NoBump_3_4
+  NoWumpus_1_5
+  Stench_3_1
+  NoWumpus_5_4
+  NoPit_1_1
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_1_1
+  NoBreeze_3_5
+  Safe_1_6
+  NoBump_2_2
+  Safe_4_5
+  NoBreeze_4_4
+  Glitter_4_5
+  Safe_2_6
+  NoGlitter_5_4
+  Safe_4_6
+  NoBreeze_1_5
+  NoBreeze_4_5
+  NoBreeze_1_2
+  NoStench_2_3
+  NoWumpus_4_5
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoStench_2_2
+  NoGlitter_1_2
+  Breeze_2_2
+  Safe_2_1
+  NoWumpus_3_1
+  NoBump_1_1
+  Safe_5_5
+  NoGlitter_2_1
+  NoPit_1_4
+  NoGlitter_1_5
+  Breeze_5_4
+  NoWumpus_2_3
+  Pit_3_4
+  Pit_1_2
+  NoStench_1_1
+  NoWumpus_3_5
+  Safe_1_5
+  Wumpus_4_1
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBump_1_5
+  NoStench_1_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  NoStench_3_4
+  Safe_3_3
+  Wumpus_3_2
+  Breeze_3_1
+  NoPit_5_4
+  NoWumpus_1_2
+  NoWumpus_1_4
+  NoGlitter_2_5
+  NoBump_1_4
+  Safe_4_3
+  NoGlitter_1_4
+  Safe_1_3
+  NoStench_3_3
+  NoBreeze_1_3
+  NoBump_3_5
+  NoPit_4_5
+  NoBump_1_2
+  NoBreeze_1_4
+  NoGlitter_1_3
+  NoGlitter_2_3
+  Safe_1_2
+  NoStench_1_3
+  Safe_1_1
+  NoWumpus_2_4
+  NoGlitter_3_4
+  NoStench_4_4
+  NoBump_4_4
+  Pit_4_1
+  NoStench_5_4
+  NoGlitter_2_4
+  NoBump_2_4
+  NoBump_2_3
+  NoStench_2_4
+  NoStench_2_5
+  NoWumpus_2_5
+  NoPit_3_5
+  WumpusAlive_false
+  HasArrow_false
+Score: -33
+Action: Move to [1,1] (returning home)
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+A . . . . . P . . . 
+
+Step 23: Agent at [1,1], Direction: down
+Percepts: [None, None, None, None, None]
+Knowledge Base Facts:
+  NoPit_3_3
+  NoBump_3_3
+  NoPit_1_5
+  Pit_5_5
+  NoArrow
+  Safe_3_6
+  NoWumpus_3_3
+  NoGlitter_3_5
+  NoWumpus_2_2
+  Pit_6_4
+  NoWumpus_2_1
+  NoBreeze_2_5
+  NoStench_3_5
+  Safe_3_4
+  Scream
+  Safe_2_4
+  Pit_5_3
+  Safe_5_4
+  NoPit_2_3
+  NoPit_4_4
+  Pit_3_2
+  NoBump_2_1
+  Stench_1_5
+  Safe_1_4
+  NoPit_2_5
+  NoWumpus_4_4
+  NoBump_2_5
+  NoWumpus_1_1
+  NoPit_2_1
+  Breeze_3_3
+  Safe_4_4
+  NoBump_4_5
+  Safe_3_1
+  NoPit_2_4
+  NoWumpus_3_4
+  NoStench_4_5
+  NoGlitter_3_3
+  Safe_3_5
+  NoBreeze_2_3
+  NoBump_3_4
+  NoWumpus_1_5
+  Stench_3_1
+  NoWumpus_5_4
+  NoPit_1_1
+  NoGlitter_4_4
+  NoPit_3_4
+  NoGlitter_3_1
+  Pit_4_3
+  NoPit_3_1
+  NoStench_2_1
+  NoGlitter_1_1
+  NoBreeze_3_5
+  Safe_1_6
+  NoBump_2_2
+  Safe_4_5
+  NoBreeze_4_4
+  Glitter_4_5
+  Safe_2_6
+  NoGlitter_5_4
+  Safe_4_6
+  NoBreeze_1_5
+  NoBreeze_4_5
+  NoBreeze_1_2
+  NoStench_2_3
+  NoWumpus_4_5
+  NoBreeze_2_1
+  Pit_2_3
+  NoPit_1_3
+  NoBump_3_1
+  NoStench_1_2
+  NoWumpus_1_3
+  NoBump_1_3
+  NoBreeze_2_4
+  NoPit_2_2
+  NoBreeze_3_4
+  NoBump_5_4
+  NoStench_2_2
+  NoGlitter_1_2
+  Breeze_2_2
+  Safe_2_1
+  NoWumpus_3_1
+  NoBump_1_1
+  Safe_5_5
+  NoGlitter_2_1
+  NoPit_1_4
+  NoGlitter_1_5
+  Breeze_5_4
+  NoWumpus_2_3
+  Pit_3_4
+  Pit_1_2
+  NoStench_1_1
+  NoWumpus_3_5
+  Safe_1_5
+  Wumpus_4_1
+  Safe_2_2
+  Safe_2_5
+  Safe_2_3
+  NoBump_1_5
+  NoStench_1_4
+  NoBreeze_1_1
+  NoGlitter_2_2
+  NoPit_1_2
+  NoStench_3_4
+  Safe_3_3
+  Wumpus_3_2
+  Breeze_3_1
+  NoPit_5_4
+  NoWumpus_1_2
+  NoWumpus_1_4
+  NoGlitter_2_5
+  NoBump_1_4
+  Safe_4_3
+  NoGlitter_1_4
+  Safe_1_3
+  NoStench_3_3
+  NoBreeze_1_3
+  NoBump_3_5
+  NoPit_4_5
+  NoBump_1_2
+  NoBreeze_1_4
+  NoGlitter_1_3
+  NoGlitter_2_3
+  Safe_1_2
+  NoStench_1_3
+  Safe_1_1
+  NoWumpus_2_4
+  NoGlitter_3_4
+  NoStench_4_4
+  NoBump_4_4
+  Pit_4_1
+  NoStench_5_4
+  NoGlitter_2_4
+  NoBump_2_4
+  NoBump_2_3
+  NoStench_2_4
+  NoStench_2_5
+  NoWumpus_2_5
+  NoPit_3_5
+  WumpusAlive_false
+  HasArrow_false
+Score: -34
+Action: Climb
+Agent climbed out with gold! Game Over.
+Final Score: 965
+Environment (W=Wumpus, G=Gold, P=Pit, A=Agent):
+. . . . . . . . . . 
+. . . P . . P . . . 
+P . . . . . . W . . 
+. . . . . . . . . . 
+W . . . . . P . . . 
+. . . . . . . . . . 
+. . . . . P . . . . 
+. . . . . . P . . . 
+. . P . . . . . . . 
+A . . . . . P . . . 
